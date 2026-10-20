@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "standard": {
+    "name": "cbt-site-standard",
+    "version": "1.2.0",
+    "referenceRepository": "YunSangYeong/electrician-cbt",
+    "referenceCommit": "b9a682ccff1b460334b78d5bfad9375b7ec4fbb6"
+  },
+  "qualification": {
+    "name": "지게차운전기능사",
+    "slug": "forklift",
+    "officialIssuer": "한국산업인력공단",
+    "rulesVerificationStatus": "verified-summary",
+    "officialSources": [
+      "https://www.q-net.or.kr/crf005.do?id=crf00503&jmCd=7875",
+      "https://www.q-net.or.kr/crf005.do?id=crf00503s02&gSite=Q&jmCd=7875&jmInfoDivCcd=B0&seriesCd=04"
+    ],
+    "verifiedAt": "2026-10-20",
+    "limitations": "세부 출제기준·문항별 배점표 전수 대조 미완료. 과락 없음은 안내된 총점 합격기준에 따름."
+  },
+  "exam": {
+    "questionCount": 60,
+    "durationMinutes": 60,
+    "choiceCount": 4,
+    "subjects": [
+      "지게차 주행",
+      "화물 적재",
+      "운반",
+      "하역",
+      "안전관리"
+    ],
+    "selectionPolicy": "앱 학습용 영역별 12문항. 공식 영역별 분포 미확인.",
+    "scoring": {
+      "maxScore": 100,
+      "passScore": 60,
+      "hasSubjectCutoff": false,
+      "subjectCutoffs": [],
+      "unansweredPolicy": "오답",
+      "weightPolicy": "앱 동일 배점; 공식 문항별 배점표 미확인"
+    }
+  },
+  "questionBank": {
+    "defaultBankId": "main",
+    "targetReviewedCount": 1000,
+    "importedDefaultStatus": "pending",
+    "types": [
+      "past",
+      "reconstructed",
+      "original"
+    ],
+    "allowNumericVariants": true,
+    "reportVariantFamiliesAndCounts": true,
+    "reviewedCount": 1000,
+    "conceptCount": 100,
+    "numericVariantCount": 900,
+    "numericFamilyCount": 30,
+    "pastCount": 0,
+    "reconstructedCount": 0,
+    "expertReview": "not-performed"
+  },
+  "ui": {
+    "locale": "ko-KR",
+    "showStudyCriteriaSelector": false,
+    "showBankYearRange": false,
+    "nextQuestionShortcut": "Space",
+    "shortcutModes": [
+      "exam",
+      "practice"
+    ],
+    "requireAnswerBeforeGlobalShortcut": true,
+    "autoSubmitLastQuestionOnSpace": false,
+    "officialBranding": false,
+    "showTopDisclaimerBanner": false,
+    "disclosureLocations": [
+      "footer-or-sidebar",
+      "question-bank-or-source-details",
+      "documentation"
+    ],
+    "showActionableStorageErrors": true
+  },
+  "storage": {
+    "namespace": "forklift-cbt:v1",
+    "schemaVersion": 1,
+    "maxAttempts": 5000,
+    "maxExamResults": 30
+  },
+  "deployment": {
+    "provider": "github-pages",
+    "repository": "YunSangYeong/ForkLift-cbt",
+    "branch": "main",
+    "basePath": "/ForkLift-cbt/",
+    "publicUrl": "https://YunSangYeong.github.io/ForkLift-cbt/",
+    "blogIframe": true
+  }
+}

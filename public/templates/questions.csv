@@ -1,0 +1,2 @@
+id,subject,topic,question,answer,explanation,difficulty,year,session,type,sourceUrl,verificationStatus,reviewNote,version,rights,choice1,choice2,choice3,choice4
+LOCAL-TEMPLATE-001,지게차 주행,운전 전 점검,새 문항을 여기에 작성하세요. 기본 예제를 그대로 승인하지 마세요.,4,조향 유격이 지나치거나 조작에 바퀴가 정상 반응하지 않으면 통제력을 잃을 수 있다. 이상이 있으면 운행을 중지하고 점검한다.,중,,,original,https://github.com/YunSangYeong/ForkLift-cbt/blob/main/docs/question-review.md,pending,출처·권리·정답 검수 후 승인,main,자체 제작 · CC BY 4.0 · ForkLift-cbt contributors,차체 도장 색상의 균일성,라디오의 음량,좌석 천의 무늬,핸들의 비정상 유격과 조향 응답

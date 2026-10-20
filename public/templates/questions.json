@@ -1,0 +1,25 @@
+[
+  {
+    "id": "LOCAL-TEMPLATE-001",
+    "subject": "지게차 주행",
+    "topic": "운전 전 점검",
+    "question": "새 문항을 여기에 작성하세요. 기본 예제를 그대로 승인하지 마세요.",
+    "choices": [
+      "차체 도장 색상의 균일성",
+      "라디오의 음량",
+      "좌석 천의 무늬",
+      "핸들의 비정상 유격과 조향 응답"
+    ],
+    "answer": 4,
+    "explanation": "조향 유격이 지나치거나 조작에 바퀴가 정상 반응하지 않으면 통제력을 잃을 수 있다. 이상이 있으면 운행을 중지하고 점검한다.",
+    "difficulty": "중",
+    "year": null,
+    "session": null,
+    "type": "original",
+    "sourceUrl": "https://github.com/YunSangYeong/ForkLift-cbt/blob/main/docs/question-review.md",
+    "verificationStatus": "pending",
+    "reviewNote": "출처·권리·정답 검수 후 승인",
+    "version": "main",
+    "rights": "자체 제작 · CC BY 4.0 · ForkLift-cbt contributors"
+  }
+]
