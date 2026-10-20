@@ -55,3 +55,17 @@ workflow는 main의 단위·빌드·PC/모바일 검증 성공 후 deploy-pages�
 ## 재사용 환경 설정
 
 환경 설정 초안에 필요한 도메인 목록 및 `install_script`, `start_skill`을 저장했다. 설치 스크립트는 기존 체크아웃에서 npm ci와 check를 실행하고, 시작 지침은 dev 서버 재시작·준비 확인·브라우저 검사·Pages 경로를 안내한다. 비밀값은 불필요하다. 초안 저장은 실행이나 게시와 다르며 사용자 환경 설정 검토·저장 및 Publish는 별도 단계다. 새 클라우드 작업에서의 복원은 검증하지 않았다.
+
+## 실제 원격 실행 증거
+
+앱 구현 커밋: `d24b6f9ff17fa74f5bcfee2052a4453a37d026b0` (main push 및 원격 SHA 확인).
+
+실행: https://github.com/YunSangYeong/ForkLift-cbt/actions/runs/39361316488
+
+- `validate`: 성공. npm ci, 920개 단위 검사, Chromium 설치, TypeScript·production build 및 24개 PC/모바일 브라우저 검사, Pages 아티팩트 업로드가 완료됐다.
+- `deploy`: 실패. `actions/configure-pages@v5`가 Pages 조회에서 `HttpError: Not Found`를 받았다. `deploy-pages` 단계는 실행되지 않았다.
+- check-run annotation은 Pages 활성화와 GitHub Actions Source 설정을 요구한다. 공식 `configure-pages@v5/action.yml`의 enablement 설명은 GITHUB_TOKEN 이외의 토큰과 GitHub App의 `administration:write` 및 `pages:write`를 요구한다. 현재 통합 인증의 직접 생성은 403이므로 무작정 enablement를 켜거나 토큰을 코드에 넣지 않았다.
+- 공개 주소는 배포 전 404를 확인했다. 공개 앱 기능 검증은 게시가 완료되지 않아 차단 상태다. 배포 성공으로 보고하지 않는다.
+- 관리자 설정 후 Actions에서 실패한 최신 실행을 다시 실행하면 된다. 설정 변경 뒤에는 최신 커밋의 deploy 성공과 공개 주소에서 학습 시작·답안·해설·Space·저장 동작을 다시 확인해야 한다.
+
+후속 정리는 CSV 양식의 줄바꿈을 LF로 고정하고 Space의 IME·수정키·반복 이벤트 보호 검사를 확장했다. 재생성 관련 단위 1개 통과(필터 밖 919개는 건너뜀), PC/모바일 CSV·Space 관련 4개 통과, 종료 0. 앱·문항 내용은 바꾸지 않았다. 개발 서버도 `npm run dev -- --port 5173 --strictPort`로 시작하고 실제 브라우저에서 랜덤 학습 시작→답안 선택→해설 표시를 확인했다. 최종 커밋의 상태는 저장소 Actions에서 해당 SHA와 함께 확인할 수 있다.

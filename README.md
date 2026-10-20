@@ -69,7 +69,7 @@ python3 scripts/generate-bank.py
 
 Vite base는 `/ForkLift-cbt/`, 기본 URL은 `https://YunSangYeong.github.io/ForkLift-cbt/`입니다. `.github/workflows/pages.yml`은 main push 시 단위 테스트→타입 검사·빌드→PC/모바일 브라우저 테스트 성공 후 Pages 아티팩트를 배포합니다. Actions 로그와 정확한 커밋의 결과로 완료를 확인합니다.
 
-GitHub Settings → Pages → Build and deployment → Source를 **GitHub Actions**로 설정해야 합니다. 현재 통합 인증으로 Pages 최초 활성화 API는 403을 반환했습니다. 로컬 성공, 원격 push, CI, Pages 게시, 공개 기능 검증은 서로 다른 단계이며 실제 결과는 검증 문서에 따릅니다. 같은 기본 URL이므로 이후 블로그 iframe 주소를 매번 바꿀 필요는 없습니다.
+GitHub Settings → Pages → Build and deployment → Source를 **GitHub Actions**로 설정해야 합니다. 현재 통합 인증으로 Pages 최초 활성화 API는 403을 반환했습니다. 첫 main 실행의 검증 작업은 성공했으나 배포 작업은 Pages 미활성화(404)로 실패했으며 공개 사이트 배포는 아직 완료되지 않았습니다. 로컬 성공, 원격 push, CI, Pages 게시, 공개 기능 검증은 서로 다른 단계이며 실제 결과는 검증 문서에 따릅니다. 같은 기본 URL이므로 이후 블로그 iframe 주소를 매번 바꿀 필요는 없습니다.
 
 ## 라이선스
 

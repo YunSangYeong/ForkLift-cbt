@@ -17,7 +17,7 @@ async function expectNoDefaultVersionYears(page: Page) {
     /2024\s*년?\s*[–~−-]\s*2026/,
   );
 }
-test("학습 기준 선택 제거·모바일 화면·이전 선택 복원", async ({ page }) => {
+test("학습 기준 선택 제거·모바일 화면·저장 기록 보존", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("");
@@ -37,7 +37,7 @@ test("학습 기준 선택 제거·모바일 화면·이전 선택 복원", asyn
   await expect(page.locator("main")).not.toContainText("학습 기준");
   await expect(page.locator("main")).not.toContainText("2027–2029");
   await expectNoDefaultVersionYears(page);
-  // A stored selection of the formerly unavailable bank must not block learning.
+  // Reloading keeps this qualification’s records and the single active bank.
   await page.evaluate((storageKey) => {
     const saved = JSON.parse(localStorage.getItem(storageKey)!);
     saved.version = "main";
@@ -337,18 +337,13 @@ test("채점 후 Space로 한 문제씩 이동하고 버튼·컨트롤·대화�
     .getByRole("button")
     .first()
     .click();
-  // Holding the key must not auto-advance.
-  await page.evaluate(() =>
-    window.dispatchEvent(
-      new KeyboardEvent("keydown", {
-        key: " ",
-        code: "Space",
-        repeat: true,
-        bubbles: true,
-      }),
-    ),
-  );
-  expect((await read(page)).practice.currentId).toBe(secondId);
+  // Ignore repeated keys, IME composition, and modified Space events.
+  for (const flags of [{ repeat: true }, { isComposing: true }, { altKey: true }, { ctrlKey: true }, { metaKey: true }, { shiftKey: true }]) {
+    await page.evaluate((extra) => window.dispatchEvent(new KeyboardEvent("keydown", {
+      key: " ", code: "Space", bubbles: true, ...extra,
+    })), flags);
+    expect((await read(page)).practice.currentId).toBe(secondId);
+  }
   // A focused bookmark button keeps native Space activation.
   await page.getByRole("button", { name: "북마크 추가" }).focus();
   await page.keyboard.press("Space");

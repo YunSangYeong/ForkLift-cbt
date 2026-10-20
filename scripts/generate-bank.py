@@ -75,5 +75,5 @@ example=dict(bank[0],id='LOCAL-TEMPLATE-001',question='새 문항을 여기에 �
 choices=example.pop('choices')
 for i,c in enumerate(choices,1):example['choice'+str(i)]=c
 with (ROOT/'public/templates/questions.csv').open('w',newline='') as f:
- w=csv.DictWriter(f,fieldnames=example.keys());w.writeheader();w.writerow(example)
+ w=csv.DictWriter(f,fieldnames=example.keys(),lineterminator="\n");w.writeheader();w.writerow(example)
 print('1000 authored questions: 100 concepts + 30 families × 30 variants; 200 per learning area')
