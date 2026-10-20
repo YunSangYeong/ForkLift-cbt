@@ -503,3 +503,17 @@ test("동일 origin iframe에서 Space와 저장이 작동한다", async ({ page
   await expect.poll(async () => (await read(page)).practice.currentId).not.toBe(first);
   expect((await read(page)).attempts).toHaveLength(1);
 });
+
+test("높이가 작은 모바일에서도 왼쪽 메뉴를 위아래로 스크롤한다", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 480 });
+  await page.goto("");
+  await page.getByRole("button", { name: "메뉴 열기" }).click();
+  const sidebar = page.locator(".sidebar");
+  await sidebar.hover({ position: { x: 120, y: 250 } });
+  await page.mouse.wheel(0, 900);
+  await expect.poll(() => sidebar.evaluate(el => el.scrollTop)).toBeGreaterThan(0);
+  await expect(page.getByRole("button", { name: "데이터 초기화", exact: true })).toBeInViewport();
+  await page.mouse.wheel(0, -900);
+  await expect.poll(() => sidebar.evaluate(el => el.scrollTop)).toBe(0);
+  await expect(page.getByRole("navigation").getByRole("button", { name: "학습 대시보드", exact: true })).toBeInViewport();
+});

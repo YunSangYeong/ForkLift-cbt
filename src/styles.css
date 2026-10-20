@@ -99,6 +99,14 @@ a svg {
   flex-direction: column;
   padding: 34px 20px 20px;
   z-index: 40;
+  max-height: 100vh;
+  max-height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+.sidebar > * {
+  flex-shrink: 0;
 }
 .brand {
   display: flex;
